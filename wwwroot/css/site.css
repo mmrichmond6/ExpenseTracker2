@@ -1,0 +1,52 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+  background-color: black;
+  color: white;
+}
+
+.e-bigger {
+    font-size: x-large;
+}
+
+/*Radio button Group*/
+.e-btn-group.custom-rbt-group {
+    width: 100%;
+}
+
+.e-btn-group.custom-rbt-group .e-btn {
+    width: 50%;
+}
+
+.custom-rbt-group label.e-btn {
+    box-shadow: none !important;
+    border: 1px solid #fff;
+    background-color: rgb(34 43 51);
+    color: #fff;
+}
+
+.e-btn-group.custom-rbt-group input:checked + label.e-btn {
+    border: 1px solid #fff;
+    background-color: #fff;
+    color: #212b36;
+}
+
+/*Widget*/
+.widget {
+    border-radius: 1rem;
+    background-color: #1a222b;
+}
