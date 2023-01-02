@@ -1,45 +1,38 @@
-﻿@model IEnumerable<ExpenseTracker.Models.Category>
+﻿@model IEnumerable<ExpenseTracker.Models.Transaction>
 
 @{
-    ViewData["PageTitle"] = "Categories";
-    ViewData["PageActionText"] = "+ New Category";
-    ViewData["PageActionUrl"] = "/Category/AddOrEdit";
+    ViewData["PageTitle"] = "Transactions";
+    ViewData["PageActionText"] = "+ New Transaction";
+    ViewData["PageActionUrl"] = "/Transaction/AddOrEdit";
 }
-
 
 <div class="row">
     <div class="col-md-7">
-        <ejs-grid id="categories" dataSource="@Model" gridLines="None"
-            allowSorting="true" allowPaging="true">
+        <ejs-grid id="transactions" dataSource="@Model" gridLines="None"
+                  allowSorting="true" allowPaging="true">
             <e-grid-pagesettings pageSize="10"></e-grid-pagesettings>
             <e-grid-columns>
-                <e-grid-column headerText="Category" field="TitleWithIcon"></e-grid-column>
-                <e-grid-column headerText="Type" template="#typeColumnTemplate" width="150px"></e-grid-column>
+                <e-grid-column headerText="Category" field="CategoryTitleWithIcon"></e-grid-column>
+                <e-grid-column headerText="Date" field="Date" width="110px"
+                type="date" format="MMM-dd-yy" textAlign="Left"></e-grid-column>
+                <e-grid-column headerText="Amount" field="FormattedAmount" width="110px" textAlign="Right"></e-grid-column>
                 <e-grid-column headerText="Actions" template="#actionColumnTemplate" width="100px"></e-grid-column>
             </e-grid-columns>
         </ejs-grid>
     </div>
     <div class="col-md-5">
         <div class="widget h-100 d-flex justify-content-center align-items-center">
-            <i class="fa-solid fa-shapes fa-2xl"></i>
+            <i class="fa-solid fa-money-bill-transfer fa-2xl"></i>
         </div>
     </div>
 </div>
 
-<script id="typeColumnTemplate" type="text/x-template">
-    ${if(Type=="Income")}
-        <span class="badge bg-success">${Type}</span>
-    ${else}
-        <span class="badge bg-danger">${Type}</span>
-        ${/if}
-</script>
-
 <script id="actionColumnTemplate" type="text/x-template">
     <div class="d-flex flex-row justify-content-start">
-        <a class="btn btn-sm" href="/Category/AddOrEdit/${CategoryId}">
+        <a class="btn btn-sm" href="/Transaction/AddOrEdit/${TransactionId}">
             <i class="fa-solid fa-pen fa-lg"></i>
         </a>
-        <form action="/Category/Delete/${CategoryId}" method="post">
+        <form action="/Transaction/Delete/${TransactionId}" method="post">
             @Html.AntiForgeryToken()
             <button type="submit" class="btn btn-sm btn-link no-a-decoration"
             onclick="return confirm(&quot;Are sure to delete this record?&quot;)">
